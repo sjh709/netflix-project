@@ -11,6 +11,7 @@ const Navigation = () => {
         <Navbar.Brand>
           <Link to='/'>
             <img
+              className='logo-img'
               width={95}
               src='https://www.edigitalagency.com.au/wp-content/uploads/netflix-logo-png-large.png'
             />
@@ -23,10 +24,10 @@ const Navigation = () => {
             navbarScroll
           >
             <Link to='/' className='nav-item'>
-              Home
+              홈
             </Link>
             <Link to='/movies' className='nav-item'>
-              Movies
+              영화
             </Link>
           </Nav>
           <Form className='d-flex'>
