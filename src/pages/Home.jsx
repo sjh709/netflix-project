@@ -6,9 +6,9 @@ import MovieSlide from '../components/MovieSlide';
 
 const Home = () => {
   const dispatch = useDispatch();
-  const { popularMovies, topRatedMovies, upComingMovies } = useSelector(
-    (state) => state
-  );
+  const popularMovies = useSelector((state) => state.popularMovies);
+  const topRatedMovies = useSelector((state) => state.topRatedMovies);
+  const upComingMovies = useSelector((state) => state.upComingMovies);
   //   console.log('popularMovies?', popularMovies);
   //   console.log('topRatedMovies?', topRatedMovies);
   //   console.log('upComingMovies?', upComingMovies);

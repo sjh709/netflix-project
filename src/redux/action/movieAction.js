@@ -5,12 +5,10 @@ function getMovies() {
     const popularMovieApi = api.get(`/movie/popular?language=ko-KR`);
     const topRatedApi = api.get(`/movie/top_rated?language=ko-KR`);
     const upComingApi = api.get(`/movie/upcoming?language=ko-KR`);
+    const genreApi = api.get(`/genre/movie/list`);
 
-    let [popularMovies, topRatedMovies, upComingMovies] = await Promise.all([
-      popularMovieApi,
-      topRatedApi,
-      upComingApi,
-    ]);
+    let [popularMovies, topRatedMovies, upComingMovies, genreList] =
+      await Promise.all([popularMovieApi, topRatedApi, upComingApi, genreApi]);
 
     // console.log('popularMovies', popularMovies.data);
     // console.log('topRatedMovies', topRatedMovies.data);
@@ -22,6 +20,7 @@ function getMovies() {
         popularMovies: popularMovies.data,
         topRatedMovies: topRatedMovies.data,
         upComingMovies: upComingMovies.data,
+        genreList: genreList.data,
       },
     });
   };

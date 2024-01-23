@@ -3,9 +3,17 @@ import Badge from 'react-bootstrap/Badge';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUsers } from '@fortawesome/free-solid-svg-icons';
 import { faImdb } from '@fortawesome/free-brands-svg-icons';
+import { useSelector } from 'react-redux';
 
 const MovieCard = ({ item }) => {
+  const genreList = useSelector((state) => state.genreList);
+  const showGenre = (id) => {
+    const result = genreList.find((item) => item.id === id);
+    return result.name;
+  };
   //   console.log('MovieCard item', item);
+  //   console.log('genreList', genreList);
+
   return (
     <div
       className='movie-card'
@@ -18,7 +26,7 @@ const MovieCard = ({ item }) => {
         <div className='overlay-badge'>
           {item.genre_ids.map((id, index) => (
             <Badge bg='danger' key={index}>
-              {id}
+              {showGenre(id)}
             </Badge>
           ))}
         </div>
