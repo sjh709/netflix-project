@@ -1,5 +1,11 @@
 * {
+  box-sizing: border-box;
   font-family: 'Hahmlet', serif;
+}
+
+body {
+  background-color: #212529 !important;
+  color: #f7f8fa !important;
 }
 
 .logo-img {
@@ -8,7 +14,7 @@
 
 .nav-item {
   text-decoration: none;
-  color: white;
+  color: #f7f8fa;
   margin: 0 10px;
 }
 
@@ -44,8 +50,65 @@
   font-size: 1.3rem;
 }
 
+/* .carousel-container {
+  overflow: hidden;
+  height: 440px;
+} */
+
 .movie-card {
   width: 300px;
   height: 200px;
   background-size: cover;
+  cursor: pointer;
+}
+
+.home-container > section {
+  padding: 3rem 2rem 0 2rem;
+}
+
+.home-container > section > h3 {
+  margin-bottom: 1rem;
+}
+
+.overlay {
+  opacity: 0;
+}
+
+.movie-card:hover .overlay {
+  opacity: 1;
+  background: rgba(43, 41, 41, 0.9);
+  width: 100%;
+  height: 100%;
+  padding-top: 10px;
+  transform: scale(1.2) translateZ(20px);
+}
+
+.overlay > * {
+  margin-left: 10px;
+}
+
+.overlay h3 {
+  font-weight: 700;
+  letter-spacing: 3px;
+  line-height: 1;
+  width: 260px;
+  text-overflow: ellipsis;
+}
+
+.overlay-badge > * {
+  margin-right: 5px;
+}
+
+.overlay-info {
+  position: absolute;
+  bottom: 1rem;
+}
+
+.overlay-info > * {
+  margin-right: 8px;
+}
+
+.eightteen {
+  color: #dc143c !important;
+  font-style: italic;
 }

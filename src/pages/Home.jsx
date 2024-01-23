@@ -14,10 +14,20 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
+    <div className='home-container'>
       {popularMovies.results && <Banner movie={popularMovies.results[0]} />}
-      <h3>인기 있는 영화</h3>
-      <MovieSlide movies={popularMovies} />
+      <section>
+        <h3>인기 있는 영화</h3>
+        <MovieSlide movies={popularMovies} />
+      </section>
+      <section>
+        <h3>평점 높은 영화</h3>
+        <MovieSlide movies={popularMovies} />
+      </section>
+      <section>
+        <h3>최근에 나온 영화</h3>
+        <MovieSlide movies={popularMovies} />
+      </section>
     </div>
   );
 };

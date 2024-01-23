@@ -31,9 +31,10 @@ const MovieSlide = ({ movies }) => {
           responsive={responsive}
           draggable={false}
           infinite={true}
-          autoPlay={true}
-          autoPlaySpeed={5000}
+          //   autoPlay={true}
+          //   autoPlaySpeed={5000}
           showDots={true}
+          //   containerClass='carousel-container'
         >
           {movies.results.map((item, index) => (
             <MovieCard item={item} key={index} />
