@@ -6,8 +6,12 @@ import MovieSlide from '../components/MovieSlide';
 
 const Home = () => {
   const dispatch = useDispatch();
-  const popularMovies = useSelector((state) => state.popularMovies);
+  const { popularMovies, topRatedMovies, upComingMovies } = useSelector(
+    (state) => state
+  );
   //   console.log('popularMovies?', popularMovies);
+  //   console.log('topRatedMovies?', topRatedMovies);
+  //   console.log('upComingMovies?', upComingMovies);
 
   useEffect(() => {
     dispatch(movieAction.getMovies());
@@ -22,11 +26,11 @@ const Home = () => {
       </section>
       <section>
         <h3>평점 높은 영화</h3>
-        <MovieSlide movies={popularMovies} />
+        <MovieSlide movies={topRatedMovies} />
       </section>
       <section>
-        <h3>최근에 나온 영화</h3>
-        <MovieSlide movies={popularMovies} />
+        <h3>개봉 예정 영화</h3>
+        <MovieSlide movies={upComingMovies} />
       </section>
     </div>
   );

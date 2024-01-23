@@ -5,7 +5,7 @@ import { faUsers } from '@fortawesome/free-solid-svg-icons';
 import { faImdb } from '@fortawesome/free-brands-svg-icons';
 
 const MovieCard = ({ item }) => {
-  console.log('MovieCard item', item);
+  //   console.log('MovieCard item', item);
   return (
     <div
       className='movie-card'
