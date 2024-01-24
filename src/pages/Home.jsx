@@ -34,7 +34,7 @@ const Home = () => {
 
   return (
     <div className='home-container'>
-      <Banner movie={popularMovies.results[0]} />
+      {popularMovies.results && <Banner movie={popularMovies.results[0]} />}
       <section>
         <h3>인기 있는 영화</h3>
         <MovieSlide movies={popularMovies} />
