@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Container, Form, Nav, Navbar } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Navigation = () => {
+  const [keyword, setKeyword] = useState('');
+  const navigate = useNavigate();
+
+  const searchByKeyword = (event) => {
+    event.preventDefault();
+    navigate(`/movies?q=${keyword}`);
+    setKeyword('');
+  };
+
   return (
     <Navbar bg='dark' expand='lg'>
       <Container fluid>
@@ -30,14 +39,16 @@ const Navigation = () => {
               영화
             </Link>
           </Nav>
-          <Form className='d-flex'>
+          <Form className='d-flex' onSubmit={searchByKeyword}>
             <Form.Control
               type='search'
               placeholder='Search'
               className='me-2'
               aria-label='Search'
+              value={keyword}
+              onChange={(event) => setKeyword(event.target.value)}
             />
-            <Button variant='outline-danger'>
+            <Button variant='outline-danger' type='submit'>
               <FontAwesomeIcon icon={faMagnifyingGlass} />
             </Button>
           </Form>

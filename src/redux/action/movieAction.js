@@ -39,4 +39,26 @@ function getMovies() {
   };
 }
 
-export const movieAction = { getMovies };
+function searchMovies(keyword) {
+  return async (dispatch) => {
+    try {
+      //데이터 도착 전 -> 로딩 true
+      dispatch({ type: 'GET_MOVIES_REQUEST' });
+
+      const url = keyword
+        ? `/search/movie?query=${keyword}&language=ko-KR`
+        : `/movie/popular?language=ko-KR`;
+      const movieList = await api.get(url);
+
+      dispatch({
+        type: 'SEARCH_MOVIES_SUCCESS',
+        payload: { movieList: movieList.data },
+      });
+    } catch (error) {
+      // 에러 핸들링
+      dispatch({ type: 'GET_MOVIES_FAILURE' });
+    }
+  };
+}
+
+export const movieAction = { getMovies, searchMovies };
