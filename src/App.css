@@ -57,6 +57,10 @@ body {
   cursor: pointer;
 }
 
+.home-container {
+  margin-bottom: 5rem;
+}
+
 .home-container > section {
   padding: 3rem 2rem 0 2rem;
 }

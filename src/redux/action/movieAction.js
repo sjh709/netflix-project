@@ -3,7 +3,7 @@ import api from '../../utils/api';
 function getMovies() {
   return async (dispatch) => {
     try {
-      //데이터 도착 전 -> 로딩 true
+      // 데이터 도착 전 -> 로딩 true
       dispatch({ type: 'GET_MOVIES_REQUEST' });
 
       const popularMovieApi = api.get(`/movie/popular?language=ko-KR`);
@@ -18,10 +18,6 @@ function getMovies() {
           upComingApi,
           genreApi,
         ]);
-
-      // console.log('popularMovies', popularMovies.data);
-      // console.log('topRatedMovies', topRatedMovies.data);
-      // console.log('upComingMovies', upComingMovies.data);
 
       dispatch({
         type: 'GET_MOVIES_SUCCESS',
@@ -42,7 +38,7 @@ function getMovies() {
 function searchMovies(keyword) {
   return async (dispatch) => {
     try {
-      //데이터 도착 전 -> 로딩 true
+      // 데이터 도착 전 -> 로딩 true
       dispatch({ type: 'GET_MOVIES_REQUEST' });
 
       const url = keyword
@@ -61,4 +57,23 @@ function searchMovies(keyword) {
   };
 }
 
-export const movieAction = { getMovies, searchMovies };
+function getMovieDetail(id) {
+  return async (dispatch) => {
+    try {
+      // 데이터 도착 전 -> 로딩 true
+      dispatch({ type: 'GET_MOVIES_REQUEST' });
+
+      const movieDetailList = await api.get(`/movie/${id}?language=ko-KR`);
+
+      dispatch({
+        type: 'GET_MOVIE_DETAIL_SUCCESS',
+        payload: { movieDetailList: movieDetailList.data },
+      });
+    } catch (error) {
+      // 에러 핸들링
+      dispatch({ type: 'GET_MOVIES_FAILURE' });
+    }
+  };
+}
+
+export const movieAction = { getMovies, searchMovies, getMovieDetail };

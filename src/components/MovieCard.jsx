@@ -4,15 +4,20 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUsers } from '@fortawesome/free-solid-svg-icons';
 import { faImdb } from '@fortawesome/free-brands-svg-icons';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const MovieCard = ({ item }) => {
+  const navigate = useNavigate();
   const genreList = useSelector((state) => state.genreList);
+
   const showGenre = (id) => {
     const result = genreList.find((item) => item.id === id);
     return result.name;
   };
-  //   console.log('MovieCard item', item);
-  //   console.log('genreList', genreList);
+
+  const movieDetailPage = (item) => {
+    navigate(`/movie/${item.id}`);
+  };
 
   return (
     <div
@@ -20,6 +25,7 @@ const MovieCard = ({ item }) => {
       style={{
         backgroundImage: `url(https://media.themoviedb.org/t/p/w710_and_h400_multi_faces${item.poster_path})`,
       }}
+      onClick={() => movieDetailPage(item)}
     >
       <div className='overlay'>
         <h3>{item.title}</h3>
