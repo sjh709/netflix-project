@@ -12,8 +12,8 @@ const MovieDetail = () => {
   const dispatch = useDispatch();
   const movieDetailList = useSelector((state) => state.movieDetailList.data);
   const movieReviewList = useSelector((state) => state.movieReviewList.data);
+  const recommendList = useSelector((state) => state.recommendList.data);
   const loading = useSelector((state) => state.loading);
-  // console.log('movieReviewList', movieReviewList);
 
   const getMovieDetail = () => {
     dispatch(movieAction.getMovieDetail(id));
@@ -40,7 +40,9 @@ const MovieDetail = () => {
       {movieDetailList && (
         <Container className='detail-wrapper'>
           <MovieDetailInfo item={movieDetailList} />
-          {movieReviewList && <ReviewInfo item={movieReviewList} />}
+          {movieReviewList && (
+            <ReviewInfo item={movieReviewList} movies={recommendList} />
+          )}
         </Container>
       )}
     </>

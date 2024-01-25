@@ -65,17 +65,20 @@ function getMovieDetail(id) {
 
       const movieDetailApi = api.get(`/movie/${id}?language=ko-KR`);
       const movieReviewApi = api.get(`/movie/${id}/reviews`);
+      const recommendApi = api.get(
+        `/movie/${id}/recommendations?language=ko-KR`
+      );
 
-      let [movieDetailList, movieReviewList] = await Promise.all([
-        movieDetailApi,
-        movieReviewApi,
-      ]);
+      let [movieDetailList, movieReviewList, recommendList] = await Promise.all(
+        [movieDetailApi, movieReviewApi, recommendApi]
+      );
 
       dispatch({
         type: 'GET_MOVIE_DETAIL_SUCCESS',
         payload: {
           movieDetailList: movieDetailList,
           movieReviewList: movieReviewList,
+          recommendList: recommendList,
         },
       });
     } catch (error) {

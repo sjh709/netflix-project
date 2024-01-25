@@ -8,9 +8,10 @@ import { useNavigate } from 'react-router-dom';
 
 const MovieCard = ({ item }) => {
   const navigate = useNavigate();
-  const genreList = useSelector((state) => state.genreList);
+  const genreList = useSelector((state) => state.genreList.genres);
 
   const showGenre = (id) => {
+    if (!genreList) return [];
     const result = genreList.find((item) => item.id === id);
     return result.name;
   };
@@ -30,11 +31,12 @@ const MovieCard = ({ item }) => {
       <div className='overlay'>
         <h3>{item.title}</h3>
         <div className='overlay-badge'>
-          {item.genre_ids.map((id, index) => (
-            <Badge bg='danger' key={index}>
-              {showGenre(id)}
-            </Badge>
-          ))}
+          {item.genre_ids &&
+            item.genre_ids.map((id, index) => (
+              <Badge bg='danger' key={index}>
+                {showGenre(id)}
+              </Badge>
+            ))}
         </div>
         <div className='overlay-info'>
           <FontAwesomeIcon icon={faImdb} style={{ color: '#FFD43B' }} />

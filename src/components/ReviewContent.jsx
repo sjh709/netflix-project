@@ -1,7 +1,6 @@
 import React from 'react';
 
 const ReviewContent = ({ item }) => {
-  console.log('item', item);
   return (
     <div className='tab-content'>
       {item.map((review, index) => (

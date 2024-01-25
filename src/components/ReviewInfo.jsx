@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import ReviewContent from './ReviewContent';
+import RecommendInfo from './RecommendInfo';
 
-const ReviewInfo = ({ item }) => {
+const ReviewInfo = ({ item, movies }) => {
   const [btnActive, setBtnActive] = useState(true);
 
   const toggleActive = () => {
@@ -26,11 +27,15 @@ const ReviewInfo = ({ item }) => {
               className={btnActive ? '' : 'active'}
               onClick={toggleActive}
             >
-              RELATED MOVIES
+              RELATED MOVIES ({movies.results.length})
             </button>
           </li>
         </ul>
-        {btnActive ? <ReviewContent item={item.results} /> : <div>영화</div>}
+        {btnActive ? (
+          <ReviewContent item={item.results} />
+        ) : (
+          <RecommendInfo movies={movies} />
+        )}
       </Col>
     </Row>
   );

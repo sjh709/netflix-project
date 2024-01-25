@@ -6,10 +6,10 @@ import Badge from 'react-bootstrap/Badge';
 import { useSelector } from 'react-redux';
 
 const MovieCardDetail = ({ item }) => {
-  const genreList = useSelector((state) => state.genreList);
-  //   console.log('moviecard', item);
+  const genreList = useSelector((state) => state.genreList.genres);
 
   const showGenre = (id) => {
+    if (!genreList) return [];
     const result = genreList.find((item) => item.id === id);
     return result.name;
   };
