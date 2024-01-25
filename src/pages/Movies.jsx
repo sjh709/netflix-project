@@ -12,7 +12,6 @@ const Movies = () => {
   const dispatch = useDispatch();
   const movieList = useSelector((state) => state.movieList);
   const loading = useSelector((state) => state.loading);
-  // console.log('movieList', movieList.results[0]);
 
   const searchMovies = () => {
     const keyword = query.get('q') || '';
@@ -43,8 +42,8 @@ const Movies = () => {
           <Row>
             {movieList.results &&
               movieList.results.map((item, index) => (
-                <Col lg={6}>
-                  <MovieCardDetail item={item} key={index} />
+                <Col lg={6} key={index}>
+                  <MovieCardDetail item={item} />
                 </Col>
               ))}
           </Row>

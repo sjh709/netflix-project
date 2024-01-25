@@ -1,11 +1,11 @@
 * {
   box-sizing: border-box;
-  font-family: 'Hahmlet', serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 body {
-  background-color: #212529 !important;
-  color: #f7f8fa !important;
+  background-color: black;
+  color: #f7f8fa;
 }
 
 .logo-img {
@@ -197,4 +197,85 @@ body {
 
 .movie-social span {
   margin-left: 5px;
+}
+
+.detail-wrapper {
+  width: 80%;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+
+.movie-detail-img > img {
+  width: 100%;
+}
+
+.genre-badge {
+  font-size: 1rem;
+  border-radius: 30px;
+  margin-right: 10px;
+  padding: 5px 20px;
+}
+
+.genre-badge-group {
+  margin-bottom: 1.5rem;
+}
+
+.movie-detail-info {
+  margin-left: 1.5rem;
+}
+
+.movie-detail-info > h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1.3rem;
+}
+
+.movie-detail-info > p {
+  margin: 1.5rem 0;
+}
+
+.movie-detail-social ul {
+  display: flex;
+  list-style: none;
+  margin: 1.3rem 0;
+  padding: 0;
+  gap: 10px;
+}
+
+.movie-detail-social span {
+  margin-left: 5px;
+}
+
+#line {
+  width: 100%;
+  height: 1.5px;
+  background-color: white;
+}
+
+.movie-info-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.movie-info-list #info-badge {
+  display: inline-block;
+  width: 30%;
+  font-size: 1rem;
+  border-radius: 30px;
+  padding: 8px 30px;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+}
+
+.btn-trailer {
+  border: none;
+  background: transparent;
+  color: red;
+  margin-top: 2rem;
+}
+
+.btn-trailer > span {
+  margin-left: 10px;
 }

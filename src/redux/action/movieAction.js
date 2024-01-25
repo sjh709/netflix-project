@@ -67,7 +67,7 @@ function getMovieDetail(id) {
 
       dispatch({
         type: 'GET_MOVIE_DETAIL_SUCCESS',
-        payload: { movieDetailList: movieDetailList.data },
+        payload: { movieDetailList: movieDetailList },
       });
     } catch (error) {
       // 에러 핸들링
