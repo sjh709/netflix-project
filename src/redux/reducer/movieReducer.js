@@ -6,6 +6,7 @@ let initialState = {
   movieList: {},
   loading: true,
   movieDetailList: {},
+  movieReviewList: {},
 };
 
 function movieReducer(state = initialState, action) {
@@ -36,6 +37,7 @@ function movieReducer(state = initialState, action) {
       return {
         ...state,
         movieDetailList: payload.movieDetailList,
+        movieReviewList: payload.movieReviewList,
         loading: false,
       };
     default:

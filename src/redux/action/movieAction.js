@@ -63,11 +63,20 @@ function getMovieDetail(id) {
       // 데이터 도착 전 -> 로딩 true
       dispatch({ type: 'GET_MOVIES_REQUEST' });
 
-      const movieDetailList = await api.get(`/movie/${id}?language=ko-KR`);
+      const movieDetailApi = api.get(`/movie/${id}?language=ko-KR`);
+      const movieReviewApi = api.get(`/movie/${id}/reviews`);
+
+      let [movieDetailList, movieReviewList] = await Promise.all([
+        movieDetailApi,
+        movieReviewApi,
+      ]);
 
       dispatch({
         type: 'GET_MOVIE_DETAIL_SUCCESS',
-        payload: { movieDetailList: movieDetailList },
+        payload: {
+          movieDetailList: movieDetailList,
+          movieReviewList: movieReviewList,
+        },
       });
     } catch (error) {
       // 에러 핸들링
