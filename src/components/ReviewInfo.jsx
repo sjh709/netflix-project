@@ -1,9 +1,9 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Row, Col } from 'react-bootstrap';
+import ReviewContent from './ReviewContent';
 
 const ReviewInfo = ({ item }) => {
-  const [btnActive, setBtnActive] = useState(false);
+  const [btnActive, setBtnActive] = useState(true);
 
   const toggleActive = () => {
     setBtnActive(!btnActive);
@@ -15,7 +15,7 @@ const ReviewInfo = ({ item }) => {
         <ul className='review-tab'>
           <li>
             <button
-              className={btnActive ? '' : 'active'}
+              className={btnActive ? 'active' : ''}
               onClick={toggleActive}
             >
               REVIEW ({item.results.length})
@@ -23,16 +23,14 @@ const ReviewInfo = ({ item }) => {
           </li>
           <li>
             <button
-              className={btnActive ? 'active' : ''}
+              className={btnActive ? '' : 'active'}
               onClick={toggleActive}
             >
               RELATED MOVIES
             </button>
           </li>
         </ul>
-        <div className='tab-content'>
-          {btnActive ? <div>리뷰</div> : <div>영화</div>}
-        </div>
+        {btnActive ? <ReviewContent item={item.results} /> : <div>영화</div>}
       </Col>
     </Row>
   );
