@@ -8,6 +8,7 @@ let initialState = {
   movieDetailList: {},
   movieReviewList: {},
   recommendList: {},
+  videoId: {},
 };
 
 function movieReducer(state = initialState, action) {
@@ -40,6 +41,7 @@ function movieReducer(state = initialState, action) {
         movieDetailList: payload.movieDetailList,
         movieReviewList: payload.movieReviewList,
         recommendList: payload.recommendList,
+        videoId: payload.videoId.data,
         loading: false,
       };
     default:

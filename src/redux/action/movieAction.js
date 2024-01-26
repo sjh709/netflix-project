@@ -68,10 +68,15 @@ function getMovieDetail(id) {
       const recommendApi = api.get(
         `/movie/${id}/recommendations?language=ko-KR`
       );
+      const videoApi = api.get(`/movie/${id}/videos`);
 
-      let [movieDetailList, movieReviewList, recommendList] = await Promise.all(
-        [movieDetailApi, movieReviewApi, recommendApi]
-      );
+      let [movieDetailList, movieReviewList, recommendList, videoId] =
+        await Promise.all([
+          movieDetailApi,
+          movieReviewApi,
+          recommendApi,
+          videoApi,
+        ]);
 
       dispatch({
         type: 'GET_MOVIE_DETAIL_SUCCESS',
@@ -79,6 +84,7 @@ function getMovieDetail(id) {
           movieDetailList: movieDetailList,
           movieReviewList: movieReviewList,
           recommendList: recommendList,
+          videoId: videoId,
         },
       });
     } catch (error) {
@@ -88,4 +94,8 @@ function getMovieDetail(id) {
   };
 }
 
-export const movieAction = { getMovies, searchMovies, getMovieDetail };
+export const movieAction = {
+  getMovies,
+  searchMovies,
+  getMovieDetail,
+};

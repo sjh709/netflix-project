@@ -11,10 +11,6 @@ const Home = () => {
   const topRatedMovies = useSelector((state) => state.topRatedMovies);
   const upComingMovies = useSelector((state) => state.upComingMovies);
   const loading = useSelector((state) => state.loading);
-  //   console.log('popularMovies?', popularMovies);
-  //   console.log('topRatedMovies?', topRatedMovies);
-  //   console.log('upComingMovies?', upComingMovies);
-  //   console.log('loading', loading);
 
   useEffect(() => {
     dispatch(movieAction.getMovies());

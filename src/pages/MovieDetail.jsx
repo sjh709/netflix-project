@@ -13,6 +13,7 @@ const MovieDetail = () => {
   const movieDetailList = useSelector((state) => state.movieDetailList.data);
   const movieReviewList = useSelector((state) => state.movieReviewList.data);
   const recommendList = useSelector((state) => state.recommendList.data);
+  const videoId = useSelector((state) => state.videoId);
   const loading = useSelector((state) => state.loading);
 
   const getMovieDetail = () => {
@@ -39,7 +40,10 @@ const MovieDetail = () => {
     <>
       {movieDetailList && (
         <Container className='detail-wrapper'>
-          <MovieDetailInfo item={movieDetailList} />
+          <MovieDetailInfo
+            item={movieDetailList}
+            videoId={videoId.results && videoId.results[0].key}
+          />
           {movieReviewList && (
             <ReviewInfo item={movieReviewList} movies={recommendList} />
           )}

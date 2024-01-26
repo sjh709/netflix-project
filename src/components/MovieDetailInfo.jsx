@@ -3,9 +3,18 @@ import { Row, Col, Badge, Modal } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faImdb } from '@fortawesome/free-brands-svg-icons';
 import { faUsers, faFilm } from '@fortawesome/free-solid-svg-icons';
+import YouTube from 'react-youtube';
 
-const MovieDetailInfo = ({ item }) => {
+const MovieDetailInfo = ({ item, videoId }) => {
   const [show, setShow] = useState(false);
+  const opts = {
+    height: '100%',
+    width: '100%',
+    playerVars: {
+      autoplay: 1,
+      modestbranding: 1, // 컨트롤 바에 youtube 로고를 표시하지 않음
+    },
+  };
 
   return (
     <>
@@ -87,10 +96,18 @@ const MovieDetailInfo = ({ item }) => {
         show={show}
         centered={true}
         onHide={() => setShow(false)}
+        dialogClassName='modal-90w'
         contentClassName='modal-style'
       >
         <Modal.Header closeVariant='white' closeButton />
-        <Modal.Body></Modal.Body>
+        <Modal.Body>
+          <YouTube
+            videoId={videoId}
+            opts={opts}
+            style={{ height: '100%' }}
+            onReady={(event) => event.target.mute()}
+          />
+        </Modal.Body>
       </Modal>
     </>
   );

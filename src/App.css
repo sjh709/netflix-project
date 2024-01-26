@@ -320,12 +320,13 @@ body {
   border-bottom: none;
 }
 
-.recommend-movie > div {
-  width: 100%;
+.modal-90w {
+  max-width: 90vw;
 }
 
 .modal-style {
   background-color: black;
+  height: 90vh;
 }
 
 .modal-style > * {
