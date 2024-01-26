@@ -4,8 +4,10 @@ import { faImdb } from '@fortawesome/free-brands-svg-icons';
 import { faUsers } from '@fortawesome/free-solid-svg-icons';
 import Badge from 'react-bootstrap/Badge';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const MovieCardDetail = ({ item }) => {
+  const navigate = useNavigate();
   const genreList = useSelector((state) => state.genreList.genres);
 
   const showGenre = (id) => {
@@ -14,8 +16,12 @@ const MovieCardDetail = ({ item }) => {
     return result.name;
   };
 
+  const movieDetailPage = (item) => {
+    navigate(`/movie/${item.id}`);
+  };
+
   return (
-    <div className='movie-card-wrapper'>
+    <div className='movie-card-wrapper' onClick={() => movieDetailPage(item)}>
       <div
         className='info-section'
         style={{
