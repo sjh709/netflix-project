@@ -323,3 +323,11 @@ body {
 .recommend-movie > div {
   width: 100%;
 }
+
+.modal-style {
+  background-color: black;
+}
+
+.modal-style > * {
+  border: none;
+}

@@ -21,7 +21,7 @@ const MovieDetail = () => {
 
   useEffect(() => {
     getMovieDetail();
-  }, []);
+  }, [id]);
 
   if (loading) {
     return (
