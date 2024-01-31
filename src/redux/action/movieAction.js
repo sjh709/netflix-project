@@ -35,15 +35,15 @@ function getMovies() {
   };
 }
 
-function searchMovies(keyword) {
+function searchMovies(keyword, page) {
   return async (dispatch) => {
     try {
       // 데이터 도착 전 -> 로딩 true
       dispatch({ type: 'GET_MOVIES_REQUEST' });
 
       const url = keyword
-        ? `/search/movie?query=${keyword}&language=ko-KR`
-        : `/movie/popular?language=ko-KR`;
+        ? `/search/movie?query=${keyword}&language=ko-KR&page=${page}`
+        : `/movie/popular?language=ko-KR&page=${page}`;
       const movieList = await api.get(url);
 
       dispatch({

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { movieAction } from '../redux/action/movieAction';
@@ -7,8 +7,10 @@ import ClipLoader from 'react-spinners/ClipLoader';
 import MovieCardDetail from '../components/MovieCardDetail';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import Pagination from 'react-js-pagination';
 
 const Movies = () => {
+  const [page, setPage] = useState(1);
   const [query, setQuery] = useSearchParams();
   const dispatch = useDispatch();
   const movieList = useSelector((state) => state.movieList);
@@ -16,12 +18,16 @@ const Movies = () => {
 
   const searchMovies = () => {
     const keyword = query.get('q') || '';
-    dispatch(movieAction.searchMovies(keyword));
+    dispatch(movieAction.searchMovies(keyword, page));
   };
 
   useEffect(() => {
     searchMovies();
-  }, [query]);
+  }, [query, page]);
+
+  const handlePageChange = (page) => {
+    setPage(page);
+  };
 
   if (loading) {
     return (
@@ -61,6 +67,17 @@ const Movies = () => {
                 </Col>
               ))}
           </Row>
+          <Pagination
+            activePage={page}
+            itemsCountPerPage={20}
+            totalItemsCount={
+              movieList.total_results > 10000 ? 10000 : movieList.total_results
+            }
+            pageRangeDisplayed={5}
+            prevPageText={'‹'}
+            nextPageText={'›'}
+            onChange={handlePageChange}
+          />
         </Col>
       </Row>
     </Container>
