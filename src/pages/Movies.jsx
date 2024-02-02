@@ -5,9 +5,8 @@ import { movieAction } from '../redux/action/movieAction';
 import { Container, Row, Col } from 'react-bootstrap';
 import ClipLoader from 'react-spinners/ClipLoader';
 import MovieCardDetail from '../components/MovieCardDetail';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import Pagination from 'react-js-pagination';
+import SortSection from '../components/SortSection';
 
 const Movies = () => {
   const [page, setPage] = useState(1);
@@ -15,6 +14,7 @@ const Movies = () => {
   const dispatch = useDispatch();
   const movieList = useSelector((state) => state.movieList);
   const loading = useSelector((state) => state.loading);
+  const sortValue = useSelector((state) => state.sortValue);
 
   const searchMovies = () => {
     const keyword = query.get('q') || '';
@@ -27,6 +27,15 @@ const Movies = () => {
 
   const handlePageChange = (page) => {
     setPage(page);
+  };
+
+  const sortList = (movie) => {
+    switch (sortValue) {
+      case 'popularity-asc':
+        return movieList.results.sort((a, b) => a.popularity - b.popularity);
+      default:
+        return movieList.results.sort((a, b) => b.popularity - a.popularity);
+    }
   };
 
   if (loading) {
@@ -47,21 +56,14 @@ const Movies = () => {
         <Col lg={4}>
           <Row>
             <Col lg={12}>
-              <div className='sort-section'>
-                <h5>Sort</h5>
-                <FontAwesomeIcon icon={faArrowRight} />
-              </div>
-              <div className='sort-section'>
-                <h5>Filter</h5>
-                <FontAwesomeIcon icon={faArrowRight} />
-              </div>
+              <SortSection sortValue={sortValue} />
             </Col>
           </Row>
         </Col>
         <Col lg={8}>
           <Row>
             {movieList.results &&
-              movieList.results.map((item, index) => (
+              sortList(movieList.results).map((item, index) => (
                 <Col lg={6} key={index}>
                   <MovieCardDetail item={item} />
                 </Col>

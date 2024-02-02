@@ -9,6 +9,7 @@ let initialState = {
   movieReviewList: {},
   recommendList: {},
   videoId: {},
+  sortValue: '',
 };
 
 function movieReducer(state = initialState, action) {
@@ -43,6 +44,11 @@ function movieReducer(state = initialState, action) {
         recommendList: payload.recommendList,
         videoId: payload.videoId.data,
         loading: false,
+      };
+    case 'SET_SORT_VALUE':
+      return {
+        ...state,
+        sortValue: payload,
       };
     default:
       return { ...state };

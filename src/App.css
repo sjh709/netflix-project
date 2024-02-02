@@ -346,18 +346,61 @@ body {
 
 .sort-section {
   width: 350px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   border: 1px solid white;
-  padding: 1.2rem 1.3rem;
   margin-bottom: 2rem;
   border-radius: 10px;
 }
 
-.sort-section > * {
+.sort-section .name {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 1.3rem;
+}
+
+.name > * {
   margin: 0;
   font-weight: bold;
+}
+
+.sort-section #arrow-right {
+  cursor: pointer;
+  display: block;
+}
+.sort-section #arrow-down {
+  cursor: pointer;
+  display: none;
+}
+
+.sort-section.open #arrow-right {
+  display: none;
+}
+.sort-section.open #arrow-down {
+  display: block;
+}
+
+.sort-section .filter {
+  text-align: center;
+  padding: 1rem;
+  display: none;
+}
+.sort-section.open .filter {
+  display: block;
+}
+.sort-section.open .name {
+  border-bottom: 1px solid white;
+}
+
+.filter #dropdown-basic-button {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid red;
+  width: 50%;
+}
+
+.filter .dropdown-item:active {
+  background: #212529;
 }
 
 .pagination {
