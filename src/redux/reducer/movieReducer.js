@@ -10,6 +10,7 @@ let initialState = {
   recommendList: {},
   videoId: {},
   sortValue: '',
+  yearFilter: [0, new Date().getFullYear()],
 };
 
 function movieReducer(state = initialState, action) {
@@ -49,6 +50,11 @@ function movieReducer(state = initialState, action) {
       return {
         ...state,
         sortValue: payload,
+      };
+    case 'SET_YEAR_FILTER':
+      return {
+        ...state,
+        yearFilter: payload,
       };
     default:
       return { ...state };

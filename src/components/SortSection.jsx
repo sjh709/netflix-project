@@ -4,6 +4,7 @@ import { faArrowRight, faArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { Dropdown, DropdownButton } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import RangeSlider from 'react-range-slider-input';
+import { useEffect } from 'react';
 
 const CURRENT_YEAR = new Date().getFullYear();
 
@@ -19,8 +20,12 @@ const dropdown_list = {
 const SortSection = ({ sortValue }) => {
   const [sortOpen, setSortOpen] = useState(false);
   const [filterOpen, setFilterOpen] = useState(false);
-  const [year, setYear] = useState([1990, CURRENT_YEAR]);
+  const [year, setYear] = useState([0, CURRENT_YEAR]);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch({ type: 'SET_YEAR_FILTER', payload: year });
+  }, [year]);
 
   return (
     <div>
@@ -79,7 +84,8 @@ const SortSection = ({ sortValue }) => {
           <div className='year-filter'>
             <h5>YEAR Filter</h5>
             <p>
-              From: <span>{year[0]}</span> - to: <span>{year[1]}</span>
+              From: <span>{year[0] || '1990'}</span> - to:{' '}
+              <span>{year[1]}</span>
             </p>
             <RangeSlider
               min={1990}
