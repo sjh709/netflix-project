@@ -403,6 +403,35 @@ body {
   background: #212529;
 }
 
+.year-filter {
+  margin: 0.5rem;
+}
+
+.year-filter p {
+  font-size: 0.8rem;
+}
+
+.year-filter span {
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.range-slider {
+  height: 5px;
+  margin-top: 1.2rem;
+}
+
+.range-slider .range-slider__range {
+  background: red;
+  border-radius: 4px;
+}
+
+.range-slider .range-slider__thumb {
+  background: red;
+  width: 15px;
+  height: 15px;
+}
+
 .pagination {
   display: flex;
   justify-content: center;

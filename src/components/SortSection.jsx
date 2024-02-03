@@ -3,6 +3,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight, faArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { Dropdown, DropdownButton } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
+import RangeSlider from 'react-range-slider-input';
+
+const CURRENT_YEAR = new Date().getFullYear();
 
 const dropdown_list = {
   'popularity-desc': '인기 높은 순',
@@ -16,15 +19,8 @@ const dropdown_list = {
 const SortSection = ({ sortValue }) => {
   const [sortOpen, setSortOpen] = useState(false);
   const [filterOpen, setFilterOpen] = useState(false);
+  const [year, setYear] = useState([1990, CURRENT_YEAR]);
   const dispatch = useDispatch();
-
-  const isSortOpen = () => {
-    setSortOpen(!sortOpen);
-  };
-
-  const isFilterOpen = () => {
-    setFilterOpen(!filterOpen);
-  };
 
   return (
     <div>
@@ -34,12 +30,12 @@ const SortSection = ({ sortValue }) => {
           <FontAwesomeIcon
             icon={faArrowRight}
             id='arrow-right'
-            onClick={isSortOpen}
+            onClick={() => setSortOpen(!sortOpen)}
           />
           <FontAwesomeIcon
             icon={faArrowDown}
             id='arrow-down'
-            onClick={isSortOpen}
+            onClick={() => setSortOpen(!sortOpen)}
           />
         </div>
         <div className='filter'>
@@ -71,13 +67,27 @@ const SortSection = ({ sortValue }) => {
           <FontAwesomeIcon
             icon={faArrowRight}
             id='arrow-right'
-            onClick={isFilterOpen}
+            onClick={() => setFilterOpen(!filterOpen)}
           />
           <FontAwesomeIcon
             icon={faArrowDown}
             id='arrow-down'
-            onClick={isFilterOpen}
+            onClick={() => setFilterOpen(!filterOpen)}
           />
+        </div>
+        <div className='filter'>
+          <div className='year-filter'>
+            <h5>YEAR Filter</h5>
+            <p>
+              From: <span>{year[0]}</span> - to: <span>{year[1]}</span>
+            </p>
+            <RangeSlider
+              min={1990}
+              max={CURRENT_YEAR}
+              defaultValue={year}
+              onInput={(value) => setYear(value)}
+            />
+          </div>
         </div>
       </div>
     </div>
