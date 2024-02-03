@@ -5,8 +5,12 @@ import { Dropdown, DropdownButton } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 
 const dropdown_list = {
-  'popularity-desc': '인기 높은 순(desc)',
-  'popularity-asc': '인기 낮은 순(asc)',
+  'popularity-desc': '인기 높은 순',
+  'popularity-asc': '인기 낮은 순',
+  'release-day-desc': '최근 순',
+  'release-day-asc': '오래된 순',
+  'vote-desc': '평점 높은 순',
+  'vote-asc': '평점 낮은 순',
 };
 
 const SortSection = ({ sortValue }) => {
@@ -49,11 +53,15 @@ const SortSection = ({ sortValue }) => {
             }
           >
             <Dropdown.Item eventKey='popularity-desc'>
-              인기 높은 순(desc)
+              인기 높은 순
             </Dropdown.Item>
             <Dropdown.Item eventKey='popularity-asc'>
-              인기 낮은 순(asc)
+              인기 낮은 순
             </Dropdown.Item>
+            <Dropdown.Item eventKey='release-day-desc'>최근순</Dropdown.Item>
+            <Dropdown.Item eventKey='release-day-asc'>오래된 순</Dropdown.Item>
+            <Dropdown.Item eventKey='vote-desc'>평점 높은 순</Dropdown.Item>
+            <Dropdown.Item eventKey='vote-asc'>평점 낮은 순</Dropdown.Item>
           </DropdownButton>
         </div>
       </div>

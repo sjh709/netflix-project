@@ -33,6 +33,26 @@ const Movies = () => {
     switch (sortValue) {
       case 'popularity-asc':
         return movieList.results.sort((a, b) => a.popularity - b.popularity);
+      case 'release-day-desc':
+        return movieList.results.sort(
+          (a, b) =>
+            Number(b.release_date.split('-').join('')) -
+            Number(a.release_date.split('-').join(''))
+        );
+      case 'release-day-asc':
+        return movieList.results.sort(
+          (a, b) =>
+            Number(a.release_date.split('-').join('')) -
+            Number(b.release_date.split('-').join(''))
+        );
+      case 'vote-desc':
+        return movieList.results.sort(
+          (a, b) => b.vote_average - a.vote_average
+        );
+      case 'vote-asc':
+        return movieList.results.sort(
+          (a, b) => a.vote_average - b.vote_average
+        );
       default:
         return movieList.results.sort((a, b) => b.popularity - a.popularity);
     }
