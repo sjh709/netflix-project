@@ -16,6 +16,8 @@ const Movies = () => {
   const loading = useSelector((state) => state.loading);
   const sortValue = useSelector((state) => state.sortValue);
   const yearFilter = useSelector((state) => state.yearFilter);
+  const genreId = useSelector((state) => state.genreId);
+  // console.log(movieList);
 
   const searchMovies = () => {
     const keyword = query.get('q') || '';
@@ -84,17 +86,30 @@ const Movies = () => {
         <Col lg={8}>
           <Row>
             {movieList.results &&
-              sortList(movieList.results)
-                .filter(
-                  (item) =>
-                    item.release_date.slice(0, 4) >= yearFilter[0] &&
-                    item.release_date.slice(0, 4) <= yearFilter[1]
-                )
-                .map((item, index) => (
-                  <Col lg={6} key={index}>
-                    <MovieCardDetail item={item} />
-                  </Col>
-                ))}
+              (genreId === -1
+                ? sortList(movieList.results)
+                    .filter(
+                      (item) =>
+                        item.release_date.slice(0, 4) >= yearFilter[0] &&
+                        item.release_date.slice(0, 4) <= yearFilter[1]
+                    )
+                    .map((item, index) => (
+                      <Col lg={6} key={index}>
+                        <MovieCardDetail item={item} />
+                      </Col>
+                    ))
+                : sortList(movieList.results)
+                    .filter(
+                      (item) =>
+                        item.release_date.slice(0, 4) >= yearFilter[0] &&
+                        item.release_date.slice(0, 4) <= yearFilter[1]
+                    )
+                    .filter((item) => item.genre_ids.includes(genreId))
+                    .map((item, index) => (
+                      <Col lg={6} key={index}>
+                        <MovieCardDetail item={item} />
+                      </Col>
+                    )))}
           </Row>
           <Pagination
             activePage={page}

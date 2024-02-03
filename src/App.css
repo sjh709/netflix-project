@@ -384,6 +384,9 @@ body {
   padding: 1rem;
   display: none;
 }
+.sort-section .filter:not(:last-child) {
+  border-bottom: 1px solid white;
+}
 .sort-section.open .filter {
   display: block;
 }
@@ -403,8 +406,10 @@ body {
   background: #212529;
 }
 
-.year-filter {
+.year-filter,
+.genres-filter {
   margin: 0.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .year-filter p {
@@ -430,6 +435,18 @@ body {
   background: red;
   width: 15px;
   height: 15px;
+}
+
+.genres-filter .genres {
+  margin: 1rem;
+}
+
+.genres-filter .badge {
+  margin: 1rem 0.5rem 0 0.5rem;
+  padding: 15px 20px;
+  font-size: 1rem;
+  border-radius: 50px;
+  cursor: pointer;
 }
 
 .pagination {

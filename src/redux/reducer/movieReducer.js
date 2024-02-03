@@ -11,6 +11,7 @@ let initialState = {
   videoId: {},
   sortValue: '',
   yearFilter: [0, new Date().getFullYear()],
+  genreId: -1,
 };
 
 function movieReducer(state = initialState, action) {
@@ -54,7 +55,8 @@ function movieReducer(state = initialState, action) {
     case 'SET_YEAR_FILTER':
       return {
         ...state,
-        yearFilter: payload,
+        yearFilter: payload.year,
+        genreId: payload.genreId,
       };
     default:
       return { ...state };

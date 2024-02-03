@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight, faArrowDown } from '@fortawesome/free-solid-svg-icons';
-import { Dropdown, DropdownButton } from 'react-bootstrap';
-import { useDispatch } from 'react-redux';
+import { Dropdown, DropdownButton, Badge } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
 import RangeSlider from 'react-range-slider-input';
-import { useEffect } from 'react';
 
 const CURRENT_YEAR = new Date().getFullYear();
 
@@ -22,10 +21,12 @@ const SortSection = ({ sortValue }) => {
   const [filterOpen, setFilterOpen] = useState(false);
   const [year, setYear] = useState([0, CURRENT_YEAR]);
   const dispatch = useDispatch();
+  const genreList = useSelector((state) => state.genreList.genres);
+  const [genreId, setGenreId] = useState(-1);
 
   useEffect(() => {
-    dispatch({ type: 'SET_YEAR_FILTER', payload: year });
-  }, [year]);
+    dispatch({ type: 'SET_YEAR_FILTER', payload: { year, genreId } });
+  }, [year, genreId]);
 
   return (
     <div>
@@ -93,6 +94,23 @@ const SortSection = ({ sortValue }) => {
               defaultValue={year}
               onInput={(value) => setYear(value)}
             />
+          </div>
+        </div>
+        <div className='filter'>
+          <div className='genres-filter'>
+            <h5>Genres</h5>
+            <div className='genres'>
+              {genreList &&
+                genreList.map((genre, index) => (
+                  <Badge
+                    bg='danger'
+                    key={index}
+                    onClick={() => setGenreId(genre.id)}
+                  >
+                    {genre.name}
+                  </Badge>
+                ))}
+            </div>
           </div>
         </div>
       </div>
