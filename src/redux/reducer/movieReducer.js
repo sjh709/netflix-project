@@ -11,7 +11,7 @@ let initialState = {
   videoId: {},
   sortValue: '',
   yearFilter: [0, new Date().getFullYear()],
-  genreId: -1,
+  genreId: [],
 };
 
 function movieReducer(state = initialState, action) {

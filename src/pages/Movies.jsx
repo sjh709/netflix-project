@@ -17,7 +17,6 @@ const Movies = () => {
   const sortValue = useSelector((state) => state.sortValue);
   const yearFilter = useSelector((state) => state.yearFilter);
   const genreId = useSelector((state) => state.genreId);
-  // console.log(movieList);
 
   const searchMovies = () => {
     const keyword = query.get('q') || '';
@@ -86,12 +85,15 @@ const Movies = () => {
         <Col lg={8}>
           <Row>
             {movieList.results &&
-              (genreId === -1
+              (genreId.length
                 ? sortList(movieList.results)
                     .filter(
                       (item) =>
                         item.release_date.slice(0, 4) >= yearFilter[0] &&
                         item.release_date.slice(0, 4) <= yearFilter[1]
+                    )
+                    .filter((item) =>
+                      genreId.some((i) => item.genre_ids.includes(i))
                     )
                     .map((item, index) => (
                       <Col lg={6} key={index}>
@@ -104,7 +106,6 @@ const Movies = () => {
                         item.release_date.slice(0, 4) >= yearFilter[0] &&
                         item.release_date.slice(0, 4) <= yearFilter[1]
                     )
-                    .filter((item) => item.genre_ids.includes(genreId))
                     .map((item, index) => (
                       <Col lg={6} key={index}>
                         <MovieCardDetail item={item} />
@@ -115,7 +116,11 @@ const Movies = () => {
             activePage={page}
             itemsCountPerPage={20}
             totalItemsCount={
-              movieList.total_results > 10000 ? 10000 : movieList.total_results
+              movieList.total_results
+                ? movieList.total_results > 10000
+                  ? 10000
+                  : movieList.total_results
+                : 0
             }
             pageRangeDisplayed={5}
             prevPageText={'‹'}

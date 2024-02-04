@@ -449,6 +449,10 @@ body {
   cursor: pointer;
 }
 
+.genres-filter .badge.active {
+  outline: 5px double white;
+}
+
 .pagination {
   display: flex;
   justify-content: center;

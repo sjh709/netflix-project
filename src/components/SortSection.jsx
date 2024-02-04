@@ -22,11 +22,21 @@ const SortSection = ({ sortValue }) => {
   const [year, setYear] = useState([0, CURRENT_YEAR]);
   const dispatch = useDispatch();
   const genreList = useSelector((state) => state.genreList.genres);
-  const [genreId, setGenreId] = useState(-1);
+  const [genreId, setGenreId] = useState([]);
 
   useEffect(() => {
     dispatch({ type: 'SET_YEAR_FILTER', payload: { year, genreId } });
   }, [year, genreId]);
+
+  const genreBadge = (event, id) => {
+    if (event.target.classList.contains('active')) {
+      event.target.classList.remove('active');
+      setGenreId(genreId.filter((i) => i !== id));
+    } else {
+      event.target.classList.add('active');
+      setGenreId([...genreId, id]);
+    }
+  };
 
   return (
     <div>
@@ -105,7 +115,7 @@ const SortSection = ({ sortValue }) => {
                   <Badge
                     bg='danger'
                     key={index}
-                    onClick={() => setGenreId(genre.id)}
+                    onClick={(event) => genreBadge(event, genre.id)}
                   >
                     {genre.name}
                   </Badge>
