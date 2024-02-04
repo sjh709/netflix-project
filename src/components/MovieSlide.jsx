@@ -4,26 +4,29 @@ import 'react-multi-carousel/lib/styles.css';
 import MovieCard from './MovieCard';
 
 const responsive = {
-  desktop: {
+  desktop1: {
     breakpoint: { max: 3000, min: 1024 },
     items: 5,
     slidesToSlide: 5,
   },
+  desktop2: {
+    breakpoint: { max: 1024, min: 768 },
+    items: 3,
+    slidesToSlide: 3,
+  },
   tablet: {
-    breakpoint: { max: 1024, min: 464 },
+    breakpoint: { max: 768, min: 360 },
     items: 2,
     slidesToSlide: 2,
   },
   mobile: {
-    breakpoint: { max: 464, min: 0 },
+    breakpoint: { max: 360, min: 0 },
     items: 1,
     slidesToSlide: 1,
   },
 };
 
 const MovieSlide = ({ movies }) => {
-  //   console.log('MovieSlide movies', movies);
-
   return (
     <div>
       {movies.results && (

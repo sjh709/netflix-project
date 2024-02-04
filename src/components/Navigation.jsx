@@ -15,7 +15,7 @@ const Navigation = () => {
   };
 
   return (
-    <Navbar bg='dark' expand='lg'>
+    <Navbar bg='dark' expand='md'>
       <Container fluid>
         <Navbar.Brand>
           <Link to='/'>
@@ -26,6 +26,7 @@ const Navigation = () => {
             />
           </Link>
         </Navbar.Brand>
+        <Navbar.Toggle style={{ background: '#929292' }} />
         <Navbar.Collapse id='navbarScroll'>
           <Nav
             className='me-auto my-2 my-lg-0'

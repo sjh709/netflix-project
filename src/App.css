@@ -16,6 +16,8 @@ body {
   text-decoration: none;
   color: #f7f8fa;
   margin: 0 10px;
+  padding: 10px 0;
+  text-align: center;
 }
 
 .banner {
@@ -113,7 +115,7 @@ body {
 }
 
 .movie-card-wrapper {
-  width: 350px;
+  width: 100%;
   height: 500px;
   position: relative;
   transition: all 300ms ease-out;
@@ -177,7 +179,7 @@ body {
 }
 
 .movie-desc p {
-  width: 230px;
+  width: 95%;
   overflow: hidden; /* 영역을 감출 것 */
   text-overflow: ellipsis; /* ... 을 만들기 */
   line-height: 1.2;
@@ -262,7 +264,7 @@ body {
 
 .movie-info-list #info-badge {
   display: inline-block;
-  width: 30%;
+  width: 45%;
   font-size: 1rem;
   border-radius: 30px;
   padding: 8px 30px;
@@ -320,6 +322,7 @@ body {
   padding: 1.5rem 0;
   margin: 1rem 2.5rem;
   border-bottom: 1px solid white;
+  word-break: break-all;
 }
 .tab-content > .last-review {
   padding: 1.5rem 0;
@@ -345,7 +348,7 @@ body {
 }
 
 .sort-section {
-  width: 350px;
+  width: 100%;
   border: 1px solid white;
   margin-bottom: 2rem;
   border-radius: 10px;
@@ -464,12 +467,11 @@ body {
   width: 45px;
   height: 45px;
   background-color: #212529;
-  border-radius: 50%;
   font-size: 1.2rem;
 }
 
 .pagination li.active {
-  border: 1px solid white;
+  background-color: darkred;
 }
 
 .pagination a {
@@ -478,4 +480,77 @@ body {
   display: block;
   text-align: center;
   line-height: 45px;
+}
+
+/* 태블릿 */
+@media (max-width: 768px) {
+  .banner {
+    height: 100vh;
+  }
+
+  .banner::before {
+    height: 100%;
+  }
+
+  .banner-info {
+    top: 50%;
+  }
+
+  .movie-detail-info {
+    margin-top: 2.5rem;
+    margin-left: 0;
+  }
+}
+
+/* 모바일 */
+@media (max-width: 360px) {
+  .banner {
+    height: 100vh;
+  }
+
+  .banner::before {
+    height: 100%;
+  }
+
+  .banner-info {
+    top: 20%;
+    left: 10%;
+  }
+
+  .movie-detail-info {
+    margin-top: 2.5rem;
+    margin-left: 0;
+  }
+
+  .genre-badge {
+    margin-bottom: 10px;
+  }
+
+  .movie-info-list {
+    margin-top: 1rem;
+  }
+
+  .movie-info-list li {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .movie-info-list #info-badge {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .detail-info-section {
+    padding-bottom: 3rem;
+  }
+
+  .review-tab {
+    display: block;
+  }
+
+  .review-tab button {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
 }
