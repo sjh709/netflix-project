@@ -216,11 +216,13 @@ body {
   font-size: 1rem;
   border-radius: 30px;
   margin-right: 10px;
+  margin-bottom: 10px;
   padding: 5px 20px;
 }
 
 .genre-badge-group {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
+  margin-top: 1.5rem;
 }
 
 .movie-detail-info {
@@ -500,10 +502,34 @@ body {
     margin-top: 2.5rem;
     margin-left: 0;
   }
+
+  .movie-info-list {
+    margin-top: 1rem;
+  }
+
+  .movie-info-list li {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .movie-info-list #info-badge {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .review-tab {
+    display: block;
+  }
+
+  .review-tab button {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
 }
 
 /* 모바일 */
-@media (max-width: 360px) {
+@media (max-width: 430px) {
   .banner {
     height: 100vh;
   }
@@ -520,10 +546,6 @@ body {
   .movie-detail-info {
     margin-top: 2.5rem;
     margin-left: 0;
-  }
-
-  .genre-badge {
-    margin-bottom: 10px;
   }
 
   .movie-info-list {
