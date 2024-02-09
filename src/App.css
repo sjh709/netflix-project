@@ -50,6 +50,11 @@ body {
 
 .banner-info > p {
   font-size: 1.3rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 7;
+  -webkit-box-orient: vertical;
 }
 
 .movie-card {
@@ -487,15 +492,19 @@ body {
 /* 태블릿 */
 @media (max-width: 768px) {
   .banner {
-    height: 100vh;
+    height: 85vh;
   }
 
   .banner::before {
-    height: 100%;
+    height: 85%;
   }
 
   .banner-info {
-    top: 50%;
+    top: 30%;
+  }
+
+  .banner-info > p {
+    -webkit-line-clamp: 12;
   }
 
   .movie-detail-info {
@@ -531,16 +540,20 @@ body {
 /* 모바일 */
 @media (max-width: 430px) {
   .banner {
-    height: 100vh;
+    height: 85vh;
   }
 
   .banner::before {
-    height: 100%;
+    height: 85%;
   }
 
   .banner-info {
     top: 20%;
     left: 10%;
+  }
+
+  .banner-info > p {
+    -webkit-line-clamp: 15;
   }
 
   .movie-detail-info {
