@@ -496,7 +496,7 @@ body {
   }
 
   .banner::before {
-    height: 85vh;
+    height: inherit;
   }
 
   .banner-info {
@@ -544,7 +544,7 @@ body {
   }
 
   .banner::before {
-    height: 85vh;
+    height: inherit;
   }
 
   .banner-info {
