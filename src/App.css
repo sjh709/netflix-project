@@ -493,6 +493,7 @@ body {
 @media (max-width: 768px) {
   .banner {
     height: 85vh;
+    position: relative;
   }
 
   .banner::before {
@@ -504,7 +505,7 @@ body {
   }
 
   .banner-info > p {
-    -webkit-line-clamp: 12;
+    -webkit-line-clamp: 10;
   }
 
   .movie-detail-info {
@@ -541,6 +542,7 @@ body {
 @media (max-width: 430px) {
   .banner {
     height: 85vh;
+    position: relative;
   }
 
   .banner::before {
@@ -553,7 +555,7 @@ body {
   }
 
   .banner-info > p {
-    -webkit-line-clamp: 15;
+    -webkit-line-clamp: 10;
   }
 
   .movie-detail-info {
