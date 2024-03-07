@@ -2,7 +2,7 @@
 
 <img width="1532" alt="project2" src="https://github.com/sjh709/netflix-project/assets/42454759/4a20ad73-07c1-4879-bc96-cd03e34e0204">
 
-- 배포 URL : https://jh-netflix-project.netlify.app/
+- 배포 URL : https://sjh709.github.io/netflix-project/
 
 <br>
 
