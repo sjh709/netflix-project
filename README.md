@@ -19,7 +19,7 @@
 - Front-end : HTML, CSS, JavaScript, React, React Router, React Bootstrap, Axios, Redux, Redux-thunk
 - Back-end : TMDB api 활용
 - 버전 관리 : Github
-- 서비스 배포 환경 : Netlify
+- ~~서비스 배포 환경 : Netlify~~
 
 <br>
 
